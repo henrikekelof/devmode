@@ -1,11 +1,26 @@
-
-( function ( win, $, undefined ) {
+( function ( win, doc, undefined ) {
 
     'use strict';
 
-    var url, newUrl, params, setDevmode, prefix;
+    var url, newUrl, params, setDevmode, prefix,
+        jsSrc, storage;
 
-    if ( $ ) {
+    storage = ( function () {
+        var uid = new Date().toString(),
+            result;
+        try {
+            win.localStorage.setItem( uid, uid );
+            result = win.localStorage.getItem( uid ) === uid;
+            win.localStorage.removeItem( uid );
+            return result && win.localStorage;
+        } catch ( exception ) {}
+    }() );
+
+    if ( !( 'querySelector' in document ) || !storage ) {
+        return;
+    }
+
+    function toggleMode( selector, devAddress ) {
 
         url = window.location;
 
@@ -26,8 +41,8 @@
         if ( newUrl === undefined ) {
 
             prefix = url.search ? '&' : '?';
-
-            setDevmode = ( $( '#bv-jsMain, #js-main' ).attr( 'src' ).indexOf( '//localhost' ) <= 0 ).toString();
+            jsSrc = doc.querySelector( selector ).src;
+            setDevmode = ( jsSrc.indexOf( devAddress ) <= 0 ).toString();
 
             newUrl = url.origin + url.pathname + url.search + prefix + 'devmode=' + setDevmode + url.hash;
 
@@ -35,22 +50,28 @@
 
         window.location.replace( newUrl );
 
+
+
     }
 
-}( window, window.$svjq ) );
+    function getSelector() {
+        var s = storage.getItem( 'devmode-selector' );
+        if ( !s ) {
+            s = window.prompt( 'Query selector for main JS file?', '#js-main' );
+        }
+        storage.setItem( 'devmode-selector', s );
+        return s;
+    }
 
-/*
+    function getDevAddress() {
+        var a = storage.getItem( 'devmode-devadress' );
+        if ( !a ) {
+            a = window.prompt( 'Local adress for devmode?', 'localhost' );
+        }
+        storage.setItem( 'devmode-devadress', a );
+        return '//' + a;
+    }
 
- hash: ""
- host: "utstallning.nrm.se"
- hostname: "utstallning.nrm.se"
- href: "http://utstallning.nrm.se/4.4f4d16d8151338bf60390306.html?test=1"
- origin: "http://utstallning.nrm.se"
- pathname: "/4.4f4d16d8151338bf60390306.html"
- port: ""
- protocol: "http:"
- reload: reload()
- replace: ()
- search: "?test=1"
+    toggleMode( getSelector(), getDevAddress() );
 
- */
+}( window, document ) );
