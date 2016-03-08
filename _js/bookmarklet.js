@@ -64,11 +64,11 @@
     }
 
     function getDevAddress() {
-        var a = storage.getItem( 'devmode-devadress' );
+        var a = storage.getItem( 'devmode-devaddress' );
         if ( !a ) {
             a = window.prompt( 'Local adress for devmode?', 'localhost' );
         }
-        storage.setItem( 'devmode-devadress', a );
+        storage.setItem( 'devmode-devaddress', a );
         return '//' + a;
     }
 
