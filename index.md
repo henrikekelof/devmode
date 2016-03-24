@@ -3,8 +3,6 @@ layout: default
 title: Devmode
 ---
 
-# Devmode
-
 A bookmarklet to toggle developer mode.
 
 ## The Bookmarklet
