@@ -39,7 +39,7 @@
         if ( newUrl === undefined ) {
 
             prefix     = url.search ? '&' : '?';
-            setDevmode = !!( doc.getElementById( selector ) );
+            setDevmode = !( doc.getElementById( selector ) );
 
             newUrl =
                 url.origin + url.pathname + url.search + prefix + 'devmode=' + setDevmode + url.hash;
