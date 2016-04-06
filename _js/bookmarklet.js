@@ -2,10 +2,7 @@
 
     'use strict';
 
-    var url, newUrl, params, setDevmode, prefix,
-        jsSrc, storage;
-
-    storage = ( function () {
+    var storage = ( function () {
         var uid = new Date().toString(),
             result;
         try {
@@ -16,13 +13,14 @@
         } catch ( exception ) {}
     }() );
 
-    if ( !( 'querySelector' in document ) || !storage ) {
+    if ( !storage ) {
         return;
     }
 
-    function toggleMode( selector, devAddress ) {
+    function toggleMode( selector ) {
 
-        url = window.location;
+        var url = window.location,
+            setDevmode, newUrl, params, prefix;
 
         if ( url.search ) {
 
@@ -40,38 +38,27 @@
 
         if ( newUrl === undefined ) {
 
-            prefix = url.search ? '&' : '?';
-            jsSrc = doc.querySelector( selector ).src;
-            setDevmode = ( jsSrc.indexOf( devAddress ) <= 0 ).toString();
+            prefix     = url.search ? '&' : '?';
+            setDevmode = !!( doc.getElementById( selector ) );
 
-            newUrl = url.origin + url.pathname + url.search + prefix + 'devmode=' + setDevmode + url.hash;
+            newUrl =
+                url.origin + url.pathname + url.search + prefix + 'devmode=' + setDevmode + url.hash;
 
         }
 
         window.location.replace( newUrl );
 
-
-
     }
 
     function getSelector() {
-        var s = storage.getItem( 'devmode-selector' );
+        var s = storage.getItem( 'devmode-id' );
         if ( !s ) {
-            s = window.prompt( 'Query selector for main JS file?', '#js-main' );
+            s = window.prompt( 'ID for debug element?', 'js-debug' );
         }
-        storage.setItem( 'devmode-selector', s );
+        storage.setItem( 'devmode-id', s );
         return s;
     }
 
-    function getDevAddress() {
-        var a = storage.getItem( 'devmode-devaddress' );
-        if ( !a ) {
-            a = window.prompt( 'Local adress for devmode?', 'localhost' );
-        }
-        storage.setItem( 'devmode-devaddress', a );
-        return '//' + a;
-    }
-
-    toggleMode( getSelector(), getDevAddress() );
+    toggleMode( getSelector() );
 
 }( window, document ) );
