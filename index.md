@@ -12,18 +12,16 @@ A bookmarklet to toggle developer mode.
 
 
 
-
 ## Source
 
 Get the source for the bookmarklet at [https://github.com/henrikekelof/devmode](https://github.com/henrikekelof/devmode). 
 
-## Reset selector and dev.address
+## Reset selector
 
 Run this in browser console:
 
 ```javascript
 localStorage.removeItem( 'devmode-selector' );
-localStorage.removeItem( 'devmode-devaddress' );
 ```
 
 ## SiteVision Setup
@@ -65,7 +63,7 @@ development demo server.
     #set ($assetCssMain = "http://localhost:8080/site.css")
     #set ($assetJsMain = "http://localhost:8080/site.js")
 
-    <script> console.log('Using local assets'); </script>
+    <script id="js-debug"> console.log('Using local assets'); </script>
     
 #else
     
@@ -89,7 +87,7 @@ development demo server.
 #end
 
 <link rel="stylesheet" media="all" href="$assetCssMain">
-<script id="js-main" src="$assetJsMain"></script>
+<script src="$assetJsMain"></script>
         
 ```
 
