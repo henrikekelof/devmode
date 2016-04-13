@@ -60,8 +60,8 @@ development demo server.
 #if ($useLocalAssets)
     
     ## Localhost assets
-    #set ($assetCssMain = "http://localhost:8080/site.css")
-    #set ($assetJsMain = "http://localhost:8080/site.js")
+    #set ($assetCssMain = "//localhost:8080/site.css")
+    #set ($assetJsMain = "//localhost:8080/site.js")
 
     <script id="js-debug"> console.log('Using local assets'); </script>
     
