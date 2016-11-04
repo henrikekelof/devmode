@@ -1,0 +1,12 @@
+#if ( $renderContext.useLocalAssets )
+## Localhost assets
+<script data-eklfdevmode>
+    !window.eklfdevmode && ( function () { console.log( 'DevMode: Using local assets.' ); window.eklfdevmode = true; } )();
+</script>
+#end
+#if ( $renderContext.isCss )
+<link rel="stylesheet" property="stylesheet" media="all" href="$!{renderContext.assetUrl}">
+#else
+<script src="$!{renderContext.assetUrl}"></script>
+#end
+
