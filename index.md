@@ -3,12 +3,14 @@ layout: default
 title: Devmode
 ---
 
-A SiteVision Element and a bookmarklet to toggle developer mode.
+<p class="lead">A SiteVision Element and a bookmarklet to toggle developer mode.</p>
 
 Requires SiteVision 4.2 or later.
 
 <p><a href="/devmode/ekelof.devmode.css-1.1.sve" class="btn btn-primary btn-lg">Download Element (v1.1)</a></p>
 
+<p class="lead">Bookmarklet: Drag to bookmarks bar.</p>
+<p><a href="javascript:(function(a){var b=a.createElement('script');b.setAttribute('src','//henrikekelof.github.io/devmode/bookmarklet-4.2.js?o='+encodeURIComponent(a.location.href)+'&t='+(new Date).getTime()),a.body.appendChild(b)}(document));" class="btn btn-success btn-lg" title="Drag link to bookmarks bar!">DevMode</a></p>
 
 ## The Element
 
@@ -38,11 +40,17 @@ to be passed for every page load.
 
 1. Download and install the element. Use these settings:
 
-[screenshots]
+<img src="/devmode/assets/import1.png" alt="">
+
+<img src="/devmode/assets/import2.png" alt="">
 
 2. Add element to template
 
-[screenshots]
+<img src="/devmode/assets/template1.png" alt="">
+
+<img src="/devmode/assets/template2.png" alt="">
+
+<img src="/devmode/assets/template3.png" alt="">
 
 3. Install bookmarklet (optional)
 
@@ -60,18 +68,6 @@ to be passed for every page load.
 Get the source for the bookmarklet at [https://github.com/henrikekelof/devmode](https://github.com/henrikekelof/devmode).
 
 
-<p><a href="javascript:(function(a){var b=a.createElement('script');b.setAttribute('src','//henrikekelof.github.io/devmode/bookmarklet.js?o='+encodeURIComponent(a.location.href)+'&t='+(new Date).getTime()),a.body.appendChild(b)}(document));" class="btn btn-success btn-lg" title="Drag link to bookmarks bar!">Legacy bookmarklet</a></p>
-
-Add-ons
-
-Import
-
-(screenshot)
-```
-
-<link rel="stylesheet" media="all" href="$assetCssMain">
-<script src="$assetJsMain"></script>
-
-```
+<p><a href="javascript:(function(a){var b=a.createElement('script');b.setAttribute('src','//henrikekelof.github.io/devmode/bookmarklet.js?o='+encodeURIComponent(a.location.href)+'&t='+(new Date).getTime()),a.body.appendChild(b)}(document));" class="btn btn-default btn-xs" title="Drag link to bookmarks bar!">Legacy bookmarklet</a></p>
 
 
