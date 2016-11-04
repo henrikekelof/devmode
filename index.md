@@ -16,6 +16,9 @@ Requires SiteVision 4.2 or later.
 
 ### Why?
 
+As a developer you might want to make changes to files on your own computer before deploying
+them to a test server. DevMode element helps you do that.
+
 During the development phase you may easily toggle between a CSS or JavaScript file that lives
 somewhere online and a file on your localhost. The live online file could be on the SiteVision
 server or on GitHub or wherever you prefer. You can switch to development mode and make changes
