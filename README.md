@@ -1,5 +1,5 @@
 
-# Devmode
+# DevMode
 
 A SiteVision Element and a bookmarklet to toggle developer mode.
 

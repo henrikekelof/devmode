@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Devmode
+title: DevMode
 ---
 
 <p class="lead">A SiteVision Element and a bookmarklet to toggle developer mode.</p>
